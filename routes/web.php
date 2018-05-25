@@ -12,8 +12,10 @@
 */
 Route::resource('articles','ArticleController');
 Route::resource('customer','DetailsController');
-// Route::get('/register','RegisterController@create');
-Auth::routes();
+// Route::get('register','RegisterController@validator');
+// Route::post('register','RegisterController@create');
+
+// Auth::routes();
 // Route::get('register','RegisterController@create')->name('register');
 // Route::post('register','RegisterController@store')->name('register');
 
