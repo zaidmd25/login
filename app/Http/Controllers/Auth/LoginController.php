@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -36,14 +38,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    protected function credentials(Request $request)
+    public function credentials(Request $request)
     {
-        $field = filter_var($request->get($this->firstname()), FILTER_VALIDATE_EMAIL)
-            ? $this->firstname()
+        $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
+            ? $this->username()
             : 'username';
 
         return [
-            $field => $request->get($this->firstname()),
+            $field => $request->get($this->username()),
             'password' => $request->password,
         ];
     }
